@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>浏览器检测</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器检测工具</title>
     <style>
         * {
             margin: 0;
@@ -119,6 +119,17 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        .copy-notice {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        
+        .copy-notice:hover {
+            color: rgba(255,255,255,0.8);
+        }
     </style>
 </head>
 <body>
@@ -139,15 +150,31 @@
             <section class="detection-panel">
                 <h2 class="panel-title">UserAgent 信息</h2>
                 <div id="user-agent" class="ua-display"></div>
+                <div class="copy-notice" onclick="copyToClipboard()">点击此处复制UserAgent</div>
             </section>
         </main>
         
         <footer>
-            <p>© 2025 浏览器检测工具 | 数据基于MIT许可协议开源</p>
+            <p>&copy; <span id="current-year">2025</span> 浏览器检测工具 | 数据基于MIT许可协议开源</p>
         </footer>
     </div>
 
     <script>
+        // 设置当前年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // 复制UserAgent到剪贴板
+        function copyToClipboard() {
+            const uaText = document.getElementById('user-agent').textContent;
+            navigator.clipboard.writeText(uaText).then(() => {
+                const notice = document.querySelector('.copy-notice');
+                notice.textContent = '已复制到剪贴板！';
+                setTimeout(() => {
+                    notice.textContent = '点击此处复制UserAgent';
+                }, 2000);
+            });
+        }
+        
         // 浏览器检测逻辑
         document.addEventListener('DOMContentLoaded', function() {
             // 显示UserAgent
