@@ -1,10 +1,4 @@
-#### 项目演示(Demo)
-【项目主页】[https://passer-by.com/browser/](https://passer-by.com/browser/)
-
-#### 应用案例(Sample)
-【BrowserIs.com】[https://browseris.com/](https://browseris.com/)
-
-#### 下载 & 安装
+### 下载 & 安装
 
 该 Javascript 库 / 模块可以用于前端也可以用于后端 Nodejs 中。
 
